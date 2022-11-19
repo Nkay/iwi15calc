@@ -12,114 +12,134 @@ import at.edu.c02.calculator.logic.CalculatorImpl;
 
 public class CalculatorTest {
 
-	@Test
-	public void testSimpleAddOperation() throws Exception {
+    @Test
+    public void testSimpleAddOperation() throws Exception {
 
-		//setup
-		Calculator calc = new CalculatorImpl();
-		
-		//execute
-		calc.push(2.0);
-		calc.push(3);
-		double result = calc.perform(Operation.add);
+        //setup
+        Calculator calc = new CalculatorImpl();
 
-		//verify
-		assertEquals(5, result, 0);
-		
+        //execute
+        calc.push(2.0);
+        calc.push(3);
+        double result = calc.perform(Operation.add);
 
-	}
-	
-	@Test
-	public void testSimpleMulOperation() throws Exception {
-
-		Calculator calc = new CalculatorImpl();
-		calc.push(2.0);
-		calc.push(3);
-		double result = calc.perform(Operation.mul);
-
-		assertEquals(6, result, 0);
-
-	}
-	
-	@Test
-	public void testSimpleDivOperation() throws Exception {
-
-		Calculator calc = new CalculatorImpl();
-		calc.push(6.0);
-		calc.push(2);
-		double result = calc.perform(Operation.div);
-
-		assertEquals(3, result, 0);
-
-	}
-	@Test
-	public void testSimpleModOperation() throws Exception {
-		Calculator calc = new CalculatorImpl();
-		calc.push(7.0);
-		calc.push(2);
-		double result = calc.perform(Operation.mod);
-
-		assertEquals(1, result, 0);
-
-	}
-	@Test
-	public void testSimpleModOperation2() throws Exception {
-		Calculator calc = new CalculatorImpl();
-		calc.push(25.5);
-		calc.push(10);
-		double result = calc.perform(Operation.mod);
-
-		assertEquals(5.5, result, 0);
-
-	}
-	
-	
-	
-	
-
-	//
-	@Test(expected = CalculatorException.class)
-	public void testPopOnEmptyStack() throws Exception {
-
-		Calculator calc = new CalculatorImpl();
-		calc.pop();
-
-	}
-
-	@Test
-	public void testDivisionByZero() throws Exception {
-
-		//Setup
-		Calculator calc = new CalculatorImpl();
-		try {
-			calc.push(2);
-			calc.push(0);
-			calc.perform(Operation.div);
-
-			fail("Exception expected");
-			
-
-		} catch (CalculatorException e) {
-			assertEquals("Division by zero", e.getMessage());
-			// e.getCause()
-		}
-
-	}
-	@Test
-	public void testModuloByZero() throws Exception {
-		//Setup
-		Calculator calc = new CalculatorImpl();
-		try {
-			calc.push(2);
-			calc.push(0);
-			calc.perform(Operation.mod);
-
-			fail("Exception expected");
+        //verify
+        assertEquals(5, result, 0);
 
 
-		} catch (CalculatorException e) {
-			assertEquals("Division by zero", e.getMessage());
-			// e.getCause()
-		}
-	}
+    }
+
+    @Test
+    public void testSimpleMulOperation() throws Exception {
+
+        Calculator calc = new CalculatorImpl();
+        calc.push(2.0);
+        calc.push(3);
+        double result = calc.perform(Operation.mul);
+
+        assertEquals(6, result, 0);
+
+    }
+
+    @Test
+    public void testSimpleDivOperation() throws Exception {
+
+        Calculator calc = new CalculatorImpl();
+        calc.push(6.0);
+        calc.push(2);
+        double result = calc.perform(Operation.div);
+
+        assertEquals(3, result, 0);
+
+    }
+
+    @Test
+    public void testSimpleModOperation() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(7.0);
+        calc.push(2);
+        double result = calc.perform(Operation.mod);
+
+        assertEquals(1, result, 0);
+
+    }
+
+    @Test
+    public void testSimpleModOperation2() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(25.5);
+        calc.push(10);
+        double result = calc.perform(Operation.mod);
+
+        assertEquals(5.5, result, 0);
+
+    }
+
+    //
+    @Test(expected = CalculatorException.class)
+    public void testPopOnEmptyStack() throws Exception {
+
+        Calculator calc = new CalculatorImpl();
+        calc.pop();
+
+    }
+
+    @Test
+    public void testDivisionByZero() throws Exception {
+
+        //Setup
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.push(2);
+            calc.push(0);
+            calc.perform(Operation.div);
+
+            fail("Exception expected");
+
+
+        } catch (CalculatorException e) {
+            assertEquals("Division by zero", e.getMessage());
+            // e.getCause()
+        }
+
+    }
+
+    @Test
+    public void testModuloByZero() throws Exception {
+        //Setup
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.push(2);
+            calc.push(0);
+            calc.perform(Operation.mod);
+
+            fail("Exception expected");
+
+
+        } catch (CalculatorException e) {
+            assertEquals("Division by zero", e.getMessage());
+            // e.getCause()
+        }
+    }
+    @Test
+    public void testSin() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(5);
+
+        double result = Math.round(calc.perform(Operation.sin)*10000/10000);
+
+        assertEquals(-0.9589, result, 0);
+    }
+    @Test
+    public void testCos() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(10);
+
+        double result = Math.round(calc.perform(Operation.cos)*10000/10000);
+
+        assertEquals(-0.8391, result, 0);
+    }
+
+
+
 }
