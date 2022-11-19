@@ -14,7 +14,9 @@ public class CalculatorImpl implements Calculator {
 	public double perform(Operation op) throws CalculatorException {
 
 		double b = pop();
-		double a = pop();
+		double a = 0.0;
+		if(!stack_.isEmpty())
+			 a = pop();
 
 		switch (op) {
 		case add:
@@ -34,6 +36,10 @@ public class CalculatorImpl implements Calculator {
 				throw new CalculatorException("Division by zero");
 			d = a % b;
 			return d;
+		case sin:
+			return Math.sin(b);
+		case cos:
+			return Math.cos(b);
 		}
 		return 0;
 	}
