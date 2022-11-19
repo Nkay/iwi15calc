@@ -126,7 +126,7 @@ public class CalculatorTest {
         Calculator calc = new CalculatorImpl();
         calc.push(5);
 
-        double result = Math.round(calc.perform(Operation.sin)*10000/10000);
+        double result = Math.round(calc.perform(Operation.sin)*10000.0)/10000.0;
 
         assertEquals(-0.9589, result, 0);
     }
@@ -135,7 +135,7 @@ public class CalculatorTest {
         Calculator calc = new CalculatorImpl();
         calc.push(10);
 
-        double result = Math.round(calc.perform(Operation.cos)*10000/10000);
+        double result = Math.round(calc.perform(Operation.cos)*10000.0)/10000.0;
 
         assertEquals(-0.8391, result, 0);
     }
