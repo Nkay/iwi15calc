@@ -1,6 +1,8 @@
 package at.edu.c02.calculator.logic;
 
 import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 
 import at.edu.c02.calculator.Calculator;
 import at.edu.c02.calculator.CalculatorException;
@@ -40,6 +42,29 @@ public class CalculatorImpl implements Calculator {
 			return Math.sin(b);
 		case cos:
 			return Math.cos(b);
+	    case dotproduct:
+			int result = 0;
+			if(b <= 0)
+				throw new CalculatorException("Amount elements per vector must be >= 1");
+			List<Integer> listB = new ArrayList<Integer>();
+			List<Integer> listA = new ArrayList<Integer>();
+
+			//listB
+			listB.add((int)a);
+			for (int i = 1; i < b; i++) {
+				a = pop();
+				listB.add((int)a);
+			}
+			//listA
+			for (int i = 0; i < b; i++) {
+				a = pop();
+				listA.add((int)a);
+			}
+			//dotproduct
+			for (int i = 0; i < b; i++) {
+				result += listA.get(i) * listB.get(i);
+			}
+			return result;
 		}
 		return 0;
 	}

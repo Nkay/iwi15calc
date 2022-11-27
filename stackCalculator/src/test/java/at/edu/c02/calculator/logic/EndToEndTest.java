@@ -32,4 +32,14 @@ public class EndToEndTest {
 
         assertEquals(53, result, 0);
     }
+
+    @Test
+    public void testParserTest08Xml() throws Exception{
+        Calculator cal = new CalculatorImpl();
+
+        Parser parser = new Parser(cal);
+        double result = parser.parse(new File("src/test/resources/test08.xml"));
+
+        assertEquals(266, result, 0);
+    }
 }

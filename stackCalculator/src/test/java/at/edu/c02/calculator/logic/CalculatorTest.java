@@ -139,7 +139,34 @@ public class CalculatorTest {
 
         assertEquals(-0.8391, result, 0);
     }
+    @Test
+    public void testDotproduct() throws Exception {
+        Calculator calc = new CalculatorImpl();
+        calc.push(1);
+        calc.push(3);
+        calc.push(2);
+        calc.push(4);
+        calc.push(2);
+        double result = calc.perform(Operation.dotproduct);
 
+        assertEquals(14, result, 0);
+    }
+    @Test
+    public void testDotproductNegative() throws Exception {
+        //Setup
+        Calculator calc = new CalculatorImpl();
+        try {
+            calc.push(1);
+            calc.push(3);
+            calc.push(2);
+            calc.push(4);
+            calc.push(0);
+            calc.perform(Operation.dotproduct);
 
-
+            fail("Exception expected");
+        } catch (CalculatorException e) {
+            assertEquals("Amount elements per vector must be >= 1", e.getMessage());
+            // e.getCause()
+        }
+    }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<calculation>
+    <push value="7" />
+    <push value="8" />
+    <push value="9" />
+    <push value="10" />
+    <push value="11" />
+    <push value="12" />
+    <push value="3" />
+    <operation value="dotproduct" />
+</calculation>
